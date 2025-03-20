@@ -31,12 +31,18 @@ app.get('/get-latlong', async (req, res) => {
         const data = response.data;
         
         if (data.status === 'OK' && data.results && data.results.length > 0) {
+            // const result = {
+            //     formatted_address: data.results[0].formatted_address,
+            //     latitude: data.results[0].geometry.location.lat,
+            //     longitude: data.results[0].geometry.location.lng,
+            //     place_id: data.results[0].place_id,
+            //     full_response: data // Including full response for debugging
+            // };
             const result = {
-                formatted_address: data.results[0].formatted_address,
                 latitude: data.results[0].geometry.location.lat,
                 longitude: data.results[0].geometry.location.lng,
-                place_id: data.results[0].place_id,
-                full_response: data // Including full response for debugging
+                formatted_address: data.results[0].formatted_address,
+                place_id: data.results[0].place_id
             };
             res.json(result);
         } else {
