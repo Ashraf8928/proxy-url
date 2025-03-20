@@ -1,9 +1,12 @@
 const express = require('express');
 const axios = require('axios');
+const dotenv = require('dotenv');
 const app = express();
 const PORT = 3000;
 
-const API_KEY = "AIzaSyDzopv44Ut4MntqpvZTUfaPanfD7WETN8I"; // Secure API Key (server-side only)
+dotenv.config();
+
+const API_KEY = process.env.API_KEY; // Secure API Key (server-side only)
 
 // Enable CORS and JSON parsing
 app.use(express.json());
