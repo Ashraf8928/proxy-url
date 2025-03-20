@@ -1,0 +1,27 @@
+{
+  "name": "proxy-url",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Ashraf8928/proxy-url.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Ashraf8928/proxy-url/issues"
+  },
+  "homepage": "https://github.com/Ashraf8928/proxy-url#readme",
+  "dependencies": {
+    "axios": "^1.8.4",
+    "express": "^4.21.2",
+    "node-fetch": "^3.3.2",
+    "nodemon": "^3.1.9"
+  }
+}
