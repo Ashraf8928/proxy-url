@@ -20,6 +20,7 @@
   },
   "homepage": "https://github.com/Ashraf8928/proxy-url#readme",
   "dependencies": {
+    "@vercel/analytics": "^1.5.0",
     "axios": "^1.8.4",
     "dotenv": "^16.4.7",
     "express": "^4.21.2",
