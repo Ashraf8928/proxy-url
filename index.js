@@ -42,6 +42,7 @@ app.get('/get-latlong', async (req, res) => {
                 latitude: data.results[0].geometry.location.lat,
                 longitude: data.results[0].geometry.location.lng,
                 formatted_address: data.results[0].formatted_address,
+                locality: data.results[0].postcode_localities,
                 place_id: data.results[0].place_id
             };
             res.json(result);
