@@ -2,6 +2,7 @@ const express = require('express');
 const axios = require('axios');
 const { inject } = require("@vercel/analytics");
 const dotenv = require('dotenv');
+const cors = require('cors');
 const app = express();
 const PORT = 3000;
 
@@ -9,12 +10,13 @@ dotenv.config();
 
 const API_KEY = process.env.API_KEY; // Secure API Key (server-side only)
 
-// Enable CORS and JSON parsing
+// Enable CORS for the specified URL
+app.use(cors({
+    origin: 'https://www.nilkamalhomes.com'
+}));
+
+// Enable JSON parsing
 app.use(express.json());
-app.use((req, res, next) => {
-    res.header('Access-Control-Allow-Origin', 'https://www.nilkamalhomes.com/');
-    next();
-});
 
 app.get('/get-latlong', async (req, res) => {
     console.log(req.query.pincode);
@@ -31,13 +33,6 @@ app.get('/get-latlong', async (req, res) => {
         const data = response.data;
         
         if (data.status === 'OK' && data.results && data.results.length > 0) {
-            // const result = {
-            //     formatted_address: data.results[0].formatted_address,
-            //     latitude: data.results[0].geometry.location.lat,
-            //     longitude: data.results[0].geometry.location.lng,
-            //     place_id: data.results[0].place_id,
-            //     full_response: data // Including full response for debugging
-            // };
             const result = {
                 latitude: data.results[0].geometry.location.lat,
                 longitude: data.results[0].geometry.location.lng,
