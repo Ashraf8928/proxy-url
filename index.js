@@ -12,7 +12,7 @@ const API_KEY = process.env.API_KEY; // Secure API Key (server-side only)
 // Enable CORS and JSON parsing
 app.use(express.json());
 app.use((req, res, next) => {
-    res.header('Access-Control-Allow-Origin', '*');
+    res.header('Access-Control-Allow-Origin', 'https://www.nilkamalhomes.com/');
     next();
 });
 
