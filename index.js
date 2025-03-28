@@ -33,13 +33,16 @@ app.get('/get-latlong', async (req, res) => {
         const data = response.data;
         
         if (data.status === 'OK' && data.results && data.results.length > 0) {
+            console.log(data);
             const result = {
                 latitude: data.results[0].geometry.location.lat,
                 longitude: data.results[0].geometry.location.lng,
                 formatted_address: data.results[0].formatted_address,
-                locality: data.results[0].postcode_localities,
+                state: data.results[0].address_components[3].long_name,
+                city: data.results[0].address_components[1].long_name,
                 place_id: data.results[0].place_id
             };
+           // const result = data;
             res.json(result);
         } else {
             res.status(404).json({
