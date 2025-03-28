@@ -23,7 +23,7 @@ app.use(cors({
 app.use(express.json());
 
 app.get('/get-latlong', async (req, res) => {
-    console.log(req.query.pincode);
+   // console.log(req.query.pincode);
     const pincode = req.query.pincode;
     
     if (!pincode) {
@@ -36,7 +36,7 @@ app.get('/get-latlong', async (req, res) => {
 
         if (location) {
             // If found in database, return cached data
-            console.log("Location found in database");
+            //console.log("Location found in database");
             return res.json({
                 latitude: location.latitude,
                 longitude: location.longitude,
@@ -53,7 +53,7 @@ app.get('/get-latlong', async (req, res) => {
         const data = response.data;
         
         if (data.status === 'OK' && data.results && data.results.length > 0) {
-            console.log("Location not found in database we are fetching from google api");
+          //  console.log("Location not found in database we are fetching from google api");
             const result = {
                 pincode,
                 latitude: data.results[0].geometry.location.lat,
@@ -90,6 +90,6 @@ app.get('/', (req, res) => {
 });
 
 app.listen(PORT, () => {
-    console.log(`Server running on port ${PORT}`);
-    console.log(`Test the API at: http://localhost:${PORT}/get-latlong?pincode=YOUR_PINCODE`);
+   // console.log(`Server running on port ${PORT}`);
+  //  console.log(`Test the API at: http://localhost:${PORT}/get-latlong?pincode=YOUR_PINCODE`);
 });
